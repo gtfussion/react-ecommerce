@@ -16,7 +16,7 @@ export const Rating = () => {
         />
 
         {Array.from({ length: count }, (_, i) => i).map(() => (
-          <FaStar />
+          <FaStar className="text-amber-300" />
         ))}
       </div>
     );

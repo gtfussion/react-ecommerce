@@ -8,7 +8,8 @@ export const useProducts = create((set) => ({
     category: "",
     color: "",
     size: "",
-    rating: "",
+    rating: 0,
+    searchText: "",
   },
   setLoading: function (status) {
     set({

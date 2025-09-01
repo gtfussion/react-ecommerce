@@ -22,10 +22,18 @@ export const ProductListing = () => {
       <div className="col-span-4 bg-amber-50  text-black">
         <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4 grid-cols-1 bg-slate-200 p-8">
           {productList
-            .filter((product) =>
-              filters.category == ""
-                ? true
-                : product.category === filters.category
+            .filter(
+              (product) =>
+                (filters.category == ""
+                  ? true
+                  : product.category === filters.category) &&
+                parseInt(product.rating) === filters.rating &&
+                (product.title
+                  .toLowerCase()
+                  .includes(filters.searchText.toLowerCase()) ||
+                  product.description
+                    .toLowerCase()
+                    .includes(filters.searchText.toLowerCase()))
             )
             .map((product) => {
               return <Product data={product} />;

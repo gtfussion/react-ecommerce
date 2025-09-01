@@ -1,3 +1,4 @@
+import { FaStar } from "react-icons/fa6";
 import camera from "../assets/camera.jpg";
 export const Product = (props) => {
   const { data } = props;
@@ -13,9 +14,15 @@ export const Product = (props) => {
       <div className="p-4 flex flex-col gap-2">
         <p className="font-bold text-xl">{data.title}</p>
         <p className="text-sm text-slate-400 truncate">{data.description}</p>
-        <p className=" transform transition-all duration-300 text-lg font-[600] group-hover:text-green-500 ">
-          Rs {data.price}
-        </p>
+        <div className="flex justify-between">
+          <p className=" transform transition-all duration-300 text-lg font-[600] group-hover:text-green-500 ">
+            Rs {data.price}
+          </p>
+          <span className="flex items-center">
+            <FaStar className="text-amber-300" />
+            {data.rating}/5
+          </span>
+        </div>
         <button className="w-full text-white bg-black rounded-2xl px-4 py-2 flex justify-center">
           Add to cart
         </button>
