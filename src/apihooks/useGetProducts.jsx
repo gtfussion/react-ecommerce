@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useProducts } from "../store/ProductStore";
 import axios from "axios";
+import { URL } from "../api/constants";
 
 export const useGetProducts = () => {
   const setProductList = useProducts((state) => state.setProductList);
@@ -8,7 +9,7 @@ export const useGetProducts = () => {
 
   const fetchProducts = async () => {
     setLoading(true);
-    let { data } = await axios.get("https://dummyjson.com/products");
+    let { data } = await axios.get(URL.getProducts);
     setProductList(data.products);
   };
 

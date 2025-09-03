@@ -4,6 +4,7 @@ import { About } from "../pages/About";
 import { RootLayout } from "../Layouts/RootLayout";
 import { DetailPage } from "../components/DetailPage";
 import { ProductListing } from "../pages/ProductListing";
+import { ProductDetails } from "../pages/ProductDetails";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
             element: <DetailPage />,
           },
         ],
+      },
+      {
+        path: "product/:id",
+        element: <ProductDetails />,
       },
     ],
   },

@@ -1,9 +1,19 @@
 import { FaStar } from "react-icons/fa6";
 import camera from "../assets/camera.jpg";
+import { useNavigate } from "react-router-dom";
 export const Product = (props) => {
   const { data } = props;
+  const navigate = useNavigate();
+
+  const onCardClick = () => {
+    navigate(`/product/${data.id}`, { state: { data } });
+  };
+
   return (
-    <div className="flex flex-col justify-between w-full group rounded-2xl bg-white overflow-hidden shadow-md hover:shadow-lg hover:shadow-green-200 cursor-pointer">
+    <div
+      onClick={onCardClick}
+      className="flex flex-col justify-between w-full group rounded-2xl bg-white overflow-hidden shadow-md hover:shadow-lg hover:shadow-green-200 cursor-pointer"
+    >
       <div className="min-h-48">
         <img
           className=" transform transition-all duration-300 group-hover:scale-105"
