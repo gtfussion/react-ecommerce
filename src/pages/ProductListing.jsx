@@ -2,6 +2,7 @@ import { Product } from "../components/Product";
 import { Sidebar } from "../components/Sidebar";
 import { useProducts } from "../store/ProductStore";
 import { useGetProducts } from "../apihooks/useGetProducts";
+import { useState } from "react";
 // import { useState } from "react";
 
 export const ProductListing = () => {
@@ -9,7 +10,8 @@ export const ProductListing = () => {
   const loading = useProducts((state) => state.loading);
   // const [page, setPage] = useState(0);
   const productList = useProducts((state) => state.productList);
-  useGetProducts();
+  const [page, setPage] = useState(1);
+  useGetProducts(page);
   if (loading)
     return (
       <div className="w-full h-full flex justify-center items-center">
@@ -40,6 +42,13 @@ export const ProductListing = () => {
             .map((product) => {
               return <Product data={product} />;
             })}
+        </div>
+        <div className="flex justify-center items-center gap-4 my-4">
+          <button onClick={() => setPage(1)}>1</button>
+          <button onClick={() => setPage(2)}>2</button>
+          <button onClick={() => setPage(3)}>3</button>
+          <button onClick={() => setPage(4)}>4</button>
+          <button onClick={() => setPage(page + 1)}>Next</button>
         </div>
       </div>
     </div>
