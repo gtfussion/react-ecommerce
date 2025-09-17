@@ -7,11 +7,12 @@ import { useState } from "react";
 
 export const ProductListing = () => {
   // const filters = useProducts((state) => state.filters);
-  const loading = useProducts((state) => state.loading);
-  // const [page, setPage] = useState(0);
-  const productList = useProducts((state) => state.productList);
+  // const loading = useProducts((state) => state.loading);
+  // const productList = useProducts((state) => state.productList);
   const [page, setPage] = useState(1);
-  useGetProducts(page);
+  // useGetProducts(page);
+  const { data, isLoading: loading } = useGetProducts(page);
+  const productList = data.products;
   if (loading)
     return (
       <div className="w-full h-full flex justify-center items-center">
