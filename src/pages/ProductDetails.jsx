@@ -9,13 +9,11 @@ export const ProductDetails = () => {
   const { id } = useParams();
   const [selectedImageIndex, setSelectedImage] = useState(0);
 
-  const { productDetails: data, loading: loadingProdcutDetails } =
-    useGetProductsDetails(id);
-
+  const { data, isPending: loadingProdcutDetails } = useGetProductsDetails(id);
   const calculateDiscountedAmount = (price, discountPercentage) =>
     price - (price * discountPercentage) / 100;
 
-  if (loadingProdcutDetails && data) return <>Loading.... </>;
+  if (loadingProdcutDetails || !data) return <>Loading.... </>;
   return (
     <div className="bg-amber-50 text-black px-32 py-14">
       <h1 className="text-3xl font-bold ">{data.title}</h1>

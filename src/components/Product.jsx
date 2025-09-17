@@ -20,7 +20,6 @@ export const Product = (props) => {
           src={data.images[0] ?? camera}
         />
       </div>
-
       <div className="p-4 flex flex-col gap-2">
         <p className="font-bold text-xl">{data.title}</p>
         <p className="text-sm text-slate-400 truncate">{data.description}</p>

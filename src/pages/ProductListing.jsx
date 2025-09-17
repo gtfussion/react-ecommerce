@@ -2,12 +2,14 @@ import { Product } from "../components/Product";
 import { Sidebar } from "../components/Sidebar";
 import { useProducts } from "../store/ProductStore";
 import { useGetProducts } from "../apihooks/useGetProducts";
+// import { useState } from "react";
 
 export const ProductListing = () => {
-  useGetProducts();
-  const filters = useProducts((state) => state.filters);
+  // const filters = useProducts((state) => state.filters);
   const loading = useProducts((state) => state.loading);
+  // const [page, setPage] = useState(0);
   const productList = useProducts((state) => state.productList);
+  useGetProducts();
   if (loading)
     return (
       <div className="w-full h-full flex justify-center items-center">
@@ -22,19 +24,19 @@ export const ProductListing = () => {
       <div className="col-span-4 bg-amber-50  text-black">
         <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4 grid-cols-1 bg-slate-200 p-8">
           {productList
-            .filter(
-              (product) =>
-                (filters.category == ""
-                  ? true
-                  : product.category === filters.category) &&
-                parseInt(product.rating) === filters.rating &&
-                (product.title
-                  .toLowerCase()
-                  .includes(filters.searchText.toLowerCase()) ||
-                  product.description
-                    .toLowerCase()
-                    .includes(filters.searchText.toLowerCase()))
-            )
+            // .filter(
+            //   (product) =>
+            //     (filters.category == ""
+            //       ? true
+            //       : product.category === filters.category) &&
+            //     parseInt(product.rating) === filters.rating &&
+            //     (product.title
+            //       .toLowerCase()
+            //       .includes(filters.searchText.toLowerCase()) ||
+            //       product.description
+            //         .toLowerCase()
+            //         .includes(filters.searchText.toLowerCase()))
+            // )
             .map((product) => {
               return <Product data={product} />;
             })}
