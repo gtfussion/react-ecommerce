@@ -1,5 +1,4 @@
 import React from "react";
-import camera from "../../assets/camera.jpg";
 export const CartCard = ({ product }) => {
   const [quantity, setQuantity] = React.useState(product.quantity || 1);
   const total = product.price * (quantity || 1);
