@@ -6,7 +6,9 @@ export const RootLayout = () => {
   return (
     <div className="h-screen">
       <Header />
-      <Outlet />
+      <div className="bg-white h-[calc(100vh-64px)] overflow-auto text-black">
+        <Outlet />
+      </div>
     </div>
   );
 };

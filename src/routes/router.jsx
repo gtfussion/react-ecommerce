@@ -5,6 +5,7 @@ import { RootLayout } from "../Layouts/RootLayout";
 import { DetailPage } from "../components/DetailPage";
 import { ProductListing } from "../pages/ProductListing";
 import { ProductDetails } from "../pages/ProductDetails";
+import { Cart } from "../pages/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <ProductListing />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
       {
         path: "about",

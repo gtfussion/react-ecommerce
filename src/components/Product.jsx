@@ -9,6 +9,26 @@ export const Product = (props) => {
     navigate(`/product/${data.id}`, { state: { data } });
   };
 
+  const addToCart = (e) => {
+    e.stopPropagation();
+    //get items from local storage
+    const cartItems = localStorage.getItem("cart");
+    const cardData = cartItems ? JSON.parse(cartItems) : [];
+    //find the item with the same id
+    const itemIndex = cardData.findIndex((item) => item.id === data.id);
+
+    //if found increase the quantity
+    if (itemIndex !== -1) {
+      cardData[itemIndex].quantity += 1;
+    }
+    //if not found add the item with quantity 1
+    else {
+      cardData.push({ ...data, quantity: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cardData));
+  };
+
   return (
     <div
       onClick={onCardClick}
@@ -32,7 +52,10 @@ export const Product = (props) => {
             {data.rating}/5
           </span>
         </div>
-        <button className="w-full text-white bg-black rounded-2xl px-4 py-2 flex justify-center">
+        <button
+          onClick={addToCart}
+          className="w-full text-white bg-black rounded-2xl px-4 py-2 flex justify-center"
+        >
           Add to cart
         </button>
       </div>

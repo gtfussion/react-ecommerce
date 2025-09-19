@@ -1,6 +1,5 @@
 import { Product } from "../components/Product";
 import { Sidebar } from "../components/Sidebar";
-import { useProducts } from "../store/ProductStore";
 import { useGetProducts } from "../apihooks/useGetProducts";
 import { useState } from "react";
 // import { useState } from "react";
@@ -12,7 +11,7 @@ export const ProductListing = () => {
   const [page, setPage] = useState(1);
   // useGetProducts(page);
   const { data, isLoading: loading } = useGetProducts(page);
-  const productList = data.products;
+  const productList = data?.products;
   if (loading)
     return (
       <div className="w-full h-full flex justify-center items-center">
