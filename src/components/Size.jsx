@@ -37,7 +37,7 @@ export const Size = () => {
         onClick={() => {
           setFilters("size", label);
         }}
-        className={`cursor-pointer h-10 w-10 rounded-xl  text-white  flex justify-center items-center border-2  ${
+        className={`cursor-pointer h-10 w-10 rounded-xl  flex justify-center items-center border-2  ${
           isSelected ? "bg-green-600" : ""
         } `}
       >

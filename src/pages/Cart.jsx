@@ -8,7 +8,8 @@ export const Cart = () => {
       <div>
         <h1 className="text-3xl font-bold"> Shopping Bag</h1>
         <p className="text-lg mt-2">
-          <span className="font-semibold">2 items</span> in your Bag
+          <span className="font-semibold">{cartList.length} items</span> in your
+          Bag
         </p>
       </div>
       <div className="p-10 shadow-lg rounded-4xl ">
