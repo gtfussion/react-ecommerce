@@ -1,13 +1,23 @@
-import { useState } from "react";
-import { useGetProducts } from "../apihooks/useGetProducts";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useGetProductsByCategory } from "../apihooks/useGetProductsByCategory";
 import { Product } from "../components/Product";
 import { Sidebar } from "../components/Sidebar";
+// import { useState } from "react";
 
-export const ProductListing = () => {
+export const CategoryProducts = () => {
+  // const filters = useProducts((state) => state.filters);
+  // const loading = useProducts((state) => state.loading);
+  // const productList = useProducts((state) => state.productList);
   const [page, setPage] = useState(1);
+  const { catId } = useParams();
   // useGetProducts(page);
-  const { data, isLoading: loading } = useGetProducts(page);
+  const { data, isLoading: loading } = useGetProductsByCategory(catId);
   const productList = data?.products;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (loading)
     return (
@@ -15,6 +25,7 @@ export const ProductListing = () => {
         Loading...
       </div>
     );
+
   return (
     <div className="grid grid-cols-5 h-[92%]">
       <div className="hidden md:block col-span-1 p-4">

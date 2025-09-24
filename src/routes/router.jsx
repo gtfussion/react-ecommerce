@@ -6,6 +6,8 @@ import { DetailPage } from "../components/DetailPage";
 import { ProductListing } from "../pages/ProductListing";
 import { ProductDetails } from "../pages/ProductDetails";
 import { Cart } from "../pages/Cart";
+import { CategoryProducts } from "../pages/CategoryProducts";
+import { Test } from "../pages/Test";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ export const router = createBrowserRouter([
       {
         path: "product/:id",
         element: <ProductDetails />,
+      },
+      {
+        path: "products/category/:catId",
+        element: <CategoryProducts />,
+      },
+      {
+        path: "test",
+        element: <Test />,
       },
     ],
   },

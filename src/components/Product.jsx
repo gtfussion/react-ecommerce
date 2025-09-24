@@ -45,7 +45,7 @@ export const Product = (props) => {
         <p className="text-sm text-slate-400 truncate">{data.description}</p>
         <div className="flex justify-between">
           <p className=" transform transition-all duration-300 text-lg font-[600] group-hover:text-green-500 ">
-            Rs {data.price}
+            $ {data.price}
           </p>
           <span className="flex items-center">
             <FaStar className="text-amber-300" />
