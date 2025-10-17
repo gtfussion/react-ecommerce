@@ -8,7 +8,8 @@ import { ProductDetails } from "../pages/ProductDetails";
 import { Cart } from "../pages/Cart";
 import { CategoryProducts } from "../pages/CategoryProducts";
 import { Test } from "../pages/Test";
-import { Login } from "../pages/Login";
+import { Login } from "../pages/Login.tsx";
+import { AuthLayout } from "../Layouts/AuthLayout";
 
 export const router = createBrowserRouter([
   {
@@ -27,10 +28,7 @@ export const router = createBrowserRouter([
         path: "products",
         element: <ProductListing />,
       },
-      {
-        path: "cart",
-        element: <Cart />,
-      },
+
       {
         path: "about",
         element: <About />,
@@ -52,6 +50,16 @@ export const router = createBrowserRouter([
       {
         path: "test",
         element: <Test />,
+      },
+    ],
+  },
+  {
+    path: "/",
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "cart",
+        element: <Cart />,
       },
     ],
   },

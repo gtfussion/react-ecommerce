@@ -7,7 +7,7 @@ export const URL={
 }
 
 
-export const users =[
+export const users = [
 {
     name:'Prashant',
     email:"xyza@gmail.com",

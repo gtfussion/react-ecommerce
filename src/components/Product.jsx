@@ -14,6 +14,18 @@ export const Product = (props) => {
     //get items from local storage
     const cartItems = localStorage.getItem("cart");
     const cardData = cartItems ? JSON.parse(cartItems) : [];
+
+    // const userToken = localStorage.getItem('sessionId')
+    // cardData[userToken]
+
+    //"[prodcut1,product2 ,proct3]" preivous
+
+    //"{
+    // 'token1':[prodcut1,product2 ,proct3],
+    // 'token2':[prodcut1,product2 ,proct3],
+    // 'token3':[prodcut1,product2 ,proct3],
+    // }"
+//
     //find the item with the same id
     const itemIndex = cardData.findIndex((item) => item.id === data.id);
 
