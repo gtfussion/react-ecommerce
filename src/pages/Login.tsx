@@ -1,67 +1,47 @@
-import { Field, FieldArray, Form, Formik } from "formik";
-import { useNavigate } from "react-router-dom";
-import { FormikFormField } from "../components/Molecules/FormikFormField";
-import { loginLocally } from "../services/loginService";
-import { useUserStore } from "../store/UserStore";
-import { LoginSchema } from "../validationSchemas/Login";
-import { Friends } from "../components/Friends/Friends";
-import { LoginModel } from "../types/loginModel";
+import { LoginForm } from "../components/Login/Login";
+import { SignUpForm } from "../components/Login/Signup";
+import { useLoginStore } from "../store/LoginStore";
 
 export const Login = () => {
-  const setSessionId = useUserStore((state) => state.setSessionId);
-  const nav = useNavigate();
-
-  const handleLogin = (
-    { email, password }: LoginModel,
-    setSubmitting: (isSubmitting: boolean) => void
-  ) => {
-    const user = loginLocally({ email: email, password: password });
-
-    setTimeout(() => {
-      setSubmitting(false);
-      if (user) {
-        setSessionId(user.token);
-        nav("/");
-      }
-    }, 2000);
-  };
+  const isLogin = useLoginStore((state) => state.isLogin);
 
   return (
-    <div className="p-6">
-      <Formik
-        validationSchema={LoginSchema}
-        initialValues={{
-          email: "",
-          password: "",
-          friends: ["jared", "ian", "brent"],
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(true);
-          handleLogin(values, setSubmitting);
-        }}
+    <div className="relative shadow-[0_0_40px_10px_rgba(217,119,6,0.4)]  max-w-5xl mx-auto mt-[8rem]  min-h-[550px] max-h-[550px] h-full border-2 border-amber-600 bg-amber-700 rounded-md p-8 overflow-hidden transition-all duration-700 ease-in-out">
+      <div
+        className={`absolute transition-all duration-700 ease-in-out top-0  w-[200%] h-[200%] bg-black   
+          ${
+            isLogin
+              ? "-left-[920px]  rotate-[50deg]"
+              : "-right-[920px] rotate-[-50deg]"
+          }
+        `}
+      ></div>
+
+      {/* Login Form */}
+      <div
+        className={`absolute w-full h-full transition-all duration-700 ease-in-out
+      ${
+        isLogin
+          ? "opacity-100 translate-x-0"
+          : "opacity-0 translate-x-[50px] pointer-events-none"
+      }
+    `}
       >
-        {({ isSubmitting }) => (
-          <Form>
-            <FormikFormField className={""} label="Email" name="email" />
-            <FormikFormField
-              className={""}
-              label="Password"
-              name="password"
-              type="password"
-            />
-            <hr />
-            {/* <Interest /> */}
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full text-white bg-black rounded-2xl px-4 py-2 flex justify-center"
-            >
-              {isSubmitting ? "Login in" : "Login"}
-            </button>
-            <Friends />
-          </Form>
-        )}
-      </Formik>
+        <LoginForm />
+      </div>
+
+      {/* Sign Up Form */}
+      <div
+        className={`absolute w-full h-full transition-all duration-700 ease-in-out
+      ${
+        !isLogin
+          ? "opacity-100 translate-x-0"
+          : "opacity-0 -translate-x-[50px] pointer-events-none"
+      }
+    `}
+      >
+        <SignUpForm />
+      </div>
     </div>
   );
 };

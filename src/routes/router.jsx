@@ -12,6 +12,7 @@ import { Login } from "../pages/Login.tsx";
 import { AuthLayout } from "../Layouts/AuthLayout";
 
 export const router = createBrowserRouter([
+  { path: "/login", element: <Login /> },
   {
     path: "/",
     element: <RootLayout />,
@@ -20,10 +21,7 @@ export const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
-      {
-        path: "login",
-        element: <Login />,
-      },
+
       {
         path: "products",
         element: <ProductListing />,
