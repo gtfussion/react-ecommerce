@@ -9,22 +9,27 @@ export const ProductDetails = () => {
   const { id } = useParams();
   const [selectedImageIndex, setSelectedImage] = useState(0);
 
-  const { data, isPending: loadingProdcutDetails } = useGetProductsDetails(id);
-  const calculateDiscountedAmount = (price, discountPercentage) =>
-    price - (price * discountPercentage) / 100;
+  const { data, isPending: loadingProdcutDetails } = useGetProductsDetails(
+    id ?? ""
+  );
+
+  const calculateDiscountedAmount = (
+    price: number,
+    discountPercentage: number
+  ) => price - (price * discountPercentage) / 100;
 
   if (loadingProdcutDetails || !data) return <>Loading.... </>;
   return (
     <div className="bg-amber-50 text-black px-32 py-14">
-      <h1 className="text-3xl font-bold ">{data.title}</h1>
+      <h1 className="text-3xl font-bold ">{data.data.title}</h1>
       <hr className="my-6 " />
       <div className="grid grid-cols-2 gap-20">
         <div className="flex flex-col items-center">
           <div className="w-3/4">
-            <img src={data.images?.[selectedImageIndex]} />
+            <img src={data.data.images?.[selectedImageIndex]} />
           </div>
           <div className="flex gap-4 ">
-            {data?.images?.map((eachImage, index) => (
+            {data?.data?.images?.map((eachImage, index) => (
               <div
                 onClick={() => setSelectedImage(index)}
                 key={index}
@@ -40,23 +45,23 @@ export const ProductDetails = () => {
         </div>
         <div className="flex flex-col gap-6">
           <p>
-            Brand : <strong>{data.brand}</strong>{" "}
+            Brand : <strong>{data.data.brand}</strong>{" "}
           </p>
-          <p>{data.description}</p>
+          <p>{data.data.description}</p>
 
           <div className="flex justify-between">
             <div className="flex gap-4 items-center">
               <span className="text-red-500 font-bold text-2xl">
                 $
                 {calculateDiscountedAmount(
-                  data.price,
-                  data.discountPercentage
+                  data.data.price,
+                  data.data.discountPercentage
                 ).toFixed(2)}
               </span>
-              <span className="line-through"> ${data?.price}</span>
+              <span className="line-through"> ${data?.data.price}</span>
 
               <span className="text-white bg-red-500  px-2 py-1 rounded-sm">
-                {data.discountPercentage} %
+                {data.data.discountPercentage} %
               </span>
             </div>
             <FaStar />

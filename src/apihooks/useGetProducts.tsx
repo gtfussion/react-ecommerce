@@ -3,11 +3,11 @@ import axios from "axios";
 import { URL } from "../api/constants";
 import { useQuery } from "@tanstack/react-query";
 
-const fetchProducts = (page) => {
+const fetchProducts = (page: number) => {
   const skip = page * 10 - 10;
   return axios.get(URL.getProducts + `?limit=12&skip=${skip}`); //fetcher
 };
-export const useGetProducts = (page) => {
+export const useGetProducts = (page: number) => {
   const setProductList = useProducts((state) => state.setProductList);
   const setLoading = useProducts((state) => state.setLoading);
 
@@ -17,7 +17,6 @@ export const useGetProducts = (page) => {
     select: (data) => {
       return data.data;
     },
-    onSuccess: () => {},
   });
 
   if (data && isLoading == false) {

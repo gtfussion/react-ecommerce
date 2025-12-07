@@ -1,6 +1,16 @@
 import { create } from "zustand";
+import { FilterType, ProductType } from "../types/productModel";
 
-export const useProducts = create((set) => ({
+interface ProductStoreModel {
+  productList: ProductType[];
+  loading: boolean;
+  filters: FilterType;
+  setProductList: (products: ProductType[]) => void;
+  setLoading: (status: boolean) => void;
+  setFilters: (key: string, value: string) => void;
+}
+
+export const useProducts = create<ProductStoreModel>((set) => ({
   productList: [],
   loading: false,
   selectedProduct: {},

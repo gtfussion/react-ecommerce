@@ -5,11 +5,13 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./routes/router.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Provider } from "react-redux";
+import { store } from "./store/store.ts";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 0,
-      cacheTime: 5 * 60 * 1000,
       refetchOnMount: true,
       refetchOnWindowFocus: false,
       refetchOnReconnect: true,
@@ -19,10 +21,12 @@ const queryClient = new QueryClient({
   },
 });
 
-createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </StrictMode>

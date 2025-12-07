@@ -12,6 +12,7 @@ import { Login } from "../pages/Login.tsx";
 import { AuthLayout } from "../Layouts/AuthLayout";
 
 export const router = createBrowserRouter([
+
   { path: "/login", element: <Login /> },
   {
     path: "/",
