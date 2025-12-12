@@ -10,7 +10,7 @@ export const Header = () => {
   return (
     <div className="flex justify-between p-4 bg-slate-800 ">
       <img src={logo} />
-      <div className="gap-20 flex">
+      <div className="gap-20 hidden md:flex ">
         <Link to="/">Home</Link>
         <Link to="/products">Products</Link>
         {sessionId && (

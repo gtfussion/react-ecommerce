@@ -13,7 +13,7 @@ export const HorizontalProductView = ({ cat = "fragrances" }) => {
   }
   return (
     <div className="">
-      <div className="flex justify-between my-4">
+      <div className="flex justify-between my-4 px-4">
         <p className="text-2xl font-bold ">{capitalize(cat)}</p>
         <Link to={`products/category/${cat}`} className="underline">
           Show all
@@ -21,7 +21,7 @@ export const HorizontalProductView = ({ cat = "fragrances" }) => {
       </div>
       <div className="flex  gap-4 overflow-x-scroll  no-scrollbar">
         {data?.products.map((product, index) => (
-          <div className=" max-w-72" id={index}>
+          <div className=" max-w-72 min-w-[200px] md:w-full " id={index}>
             <Product data={product} />
           </div>
         ))}

@@ -25,7 +25,7 @@ export const Product = (props) => {
     // 'token2':[prodcut1,product2 ,proct3],
     // 'token3':[prodcut1,product2 ,proct3],
     // }"
-//
+    //
     //find the item with the same id
     const itemIndex = cardData.findIndex((item) => item.id === data.id);
 
@@ -54,7 +54,7 @@ export const Product = (props) => {
       </div>
       <div className="p-4 flex flex-col gap-2">
         <p className="font-bold text-xl">{data.title}</p>
-        <p className="text-sm text-slate-400 truncate">{data.description}</p>
+        <p className="hidden md:block text-sm text-slate-400 truncate">{data.description}</p>
         <div className="flex justify-between">
           <p className=" transform transition-all duration-300 text-lg font-[600] group-hover:text-green-500 ">
             $ {data.price}

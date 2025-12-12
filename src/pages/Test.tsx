@@ -1,7 +1,7 @@
 // //Without useCallback:
 import { useMemo, useState } from "react";
 import { increment } from "../slices/counterSlice";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 
 export const Test = () => {
   const count = useAppSelector((state) => state.counter.value)

@@ -44,10 +44,15 @@ export const HomeSlider = () => {
   return (
     <div>
       <div className="relative">
-        <div className="w-full h-[calc(100vh-200px)] min-h-[calc(100vh-200px)] overflow-hidden">
+        <div className="w-full max-h-[calc(100vh-100px)] overflow-hidden">
           <img src={imageSrc} />
-          <div className="absolute top-2/5 right-48">
-            <p className="text-6xl font-bold text-cyan-700 text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;">
+          <div className="absolute top-2/5 right-6   md:right-24 lg:right-48 hidden md:block">
+            <p className="text-sm md:text-4xl lg:text-6xl font-bold text-cyan-700 text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;">
+              {content}
+            </p>
+          </div>
+          <div className="absolute bottom-0 left-1/5  block md:hidden">
+            <p className="text-sm md:text-4xl lg:text-6xl font-bold text-cyan-700 text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;">
               {content}
             </p>
           </div>
@@ -64,7 +69,7 @@ export const HomeSlider = () => {
         >
           <FaChevronRight />
         </div>
-        <div className="w-full  absolute bottom-[-30px] left-0">
+        <div className="w-full hidden md:block absolute bottom-[-30px] left-0">
           <div className="max-w-5xl w-full mx-auto bg-white rounded-2xl opacity-80">
             <div className="flex justify-between">
               <div className="flex flex-col items-center justify-center gap-2 p-10">
